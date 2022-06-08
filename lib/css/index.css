@@ -1,0 +1,45 @@
+.index {
+    background-image: url(../image/cafe.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.background {
+    background-color: white;
+    opacity: 0.5;
+    height: 100vh;
+    z-index: -1;
+}
+
+.mainBox {
+    height: 300px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.text {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(112, 76, 23);
+    color: white;
+    width: 120px;
+    height: 40px;
+}
+
+
+
