@@ -33,11 +33,7 @@
                 'item_price' => $_POST["hidden_price"],                     
             );            
                 //key 값이 shopping_cart 인 배열 0번 방에 상품 배열을 넣었다.            
-                $_SESSION["shopping_cart"][0] = $item_array;                        
-                //echo var_dump($_SESSION["shopping_cart"]);            
-                //array(1) { [0]=> array(4) { ["item_id"]=> string(1) "1" ["item_name"]=> string(14) "Samsung J2 Pro" ["item_price"]=> string(6) "100.00" ["item_quantity"]=> string(1) "1" } }                        
-                //echo var_dump($_SESSION["shopping_cart"][0]);            
-                //array(4) { ["item_id"]=> string(1) "1" ["item_name"]=> string(14) "Samsung J2 Pro" ["item_price"]=> string(6) "100.00" ["item_quantity"]=> string(1) "1" }         
+                $_SESSION["shopping_cart"][0] = $item_array;                          
         }    
     } 
 
@@ -139,7 +135,7 @@
                     <label for="takeout">테이크아웃</label>
                 </div>
             </form>
-            <input class="btn" type="submit" name="go-to-reserve" value="주문하기" onSubimt="location.href='logout.php'"/>
+            <input class="btn" type="button" name="go-to-reserve" value="주문하기" onClick="location.href='reserve.php'"/>
         </div>  
     </div>
 

@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 50px;
 }
 
 .tablesStates{
@@ -36,34 +37,13 @@
 .floor{
     width: 800px;
     height: 400px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
     margin: 30px;
     background-color: rgb(241, 239, 239);
 }
 
-.second {
-    display: flex;
-}
-
-.part1{
-    flex: 8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.part2{
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.line{
-    margin: 10px;
-}
 
 .radio{
     display: none;
@@ -72,6 +52,7 @@
 .seatlabel {
     display: inline-block;
     width: 50px;
+    height: 40px;
     background-color: white;
     font-size: 20px;
     margin: 20px;
@@ -81,15 +62,8 @@
     cursor: pointer;
 }
 
-.seatlabel2 {
-    display: inline-block;
-    width: 50px;
-    background-color: white;
-    font-size: 20px;
-    text-align: center;
-    padding: 8px;
-    margin: 30px;
-    cursor: pointer;
+.using {
+    background-color: grey;
 }
 
 .radio:checked + .seatlabel{

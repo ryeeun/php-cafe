@@ -22,42 +22,34 @@
             </div>
         </div>
         <div class='floor'>
-            <div class='part1'>
-                <div class='line'>
-                    <input type="radio" name="seat" id="seat1" value="1" class='radio' />
-                    <label for="seat1" class='seatlabel'>1</label>
-                    <input type="radio" name="seat" id="seat2" value="2" class='radio'/>
-                    <label for="seat2" class='seatlabel'>2</label>
-                    <input type="radio" name="seat" id="seat3" value="3" class='radio'/>
-                    <label for="seat3" class='seatlabel'>3</label>
-                </div>
-                 <div class='line'>
-                    <input type="radio" name="seat" id="seat4" value="4" class='radio' />
-                    <label for="seat4" class='seatlabel'>4</label>
-                    <input type="radio" name="seat" id="seat5" value="5" class='radio'/>
-                    <label for="seat5" class='seatlabel'>5</label>
-                    <input type="radio" name="seat" id="seat6" value="6" class='radio'/>
-                    <label for="seat6" class='seatlabel'>6</label>
-                </div>
-                <div class='line'>
-                    <input type="radio" name="seat" id="seat7" value="7" class='radio' />
-                    <label for="seat7" class='seatlabel'>7</label>
-                    <input type="radio" name="seat" id="seat8" value="8" class='radio'/>
-                    <label for="seat8" class='seatlabel'>8</label>
-                    <input type="radio" name="seat" id="seat9" value="9" class='radio'/>
-                    <label for="seat9" class='seatlabel'>9</label>
-                </div>
-            </div>
-            <div class='part2'>
-                <input type="radio" name="seat" id="seat10" value="10" class='radio' />
-                <label for="seat10" class='seatlabel2'>10</label>
-                <input type="radio" name="seat" id="seat11" value="11" class='radio'/>
-                <label for="seat11" class='seatlabel2'>11</label>
-                <input type="radio" name="seat" id="seat12" value="12" class='radio'/>
-                <label for="seat12" class='seatlabel2'>12</label>
-                <input type="radio" name="seat" id="seat13" value="13" class='radio'/>
-                <label for="seat13" class='seatlabel2'>13</label>
-            </div>
+<?php
+    include './lib/include/sql_conn.php';
+      
+    $sql = "SELECT * FROM tables";
+    $result = mysqli_query($conn, $sql);
+
+    while($row = mysqli_fetch_array($result)){
+        $num = $row['num'];
+        $isempty = $row['isempty'];
+?>
+<?php        
+        if($num <= 9){
+            if($isempty == 1){
+?>
+            <input type="radio" name="seat" id=<?php echo $num; ?> value=<?php echo $num; ?> class='radio' />
+            <label for=<?php echo $num; ?> class='seatlabel'><?php echo $num; ?></label>
+<?php
+            }
+            else{
+?>
+                <input type="radio" name="seat" id=<?php echo $num; ?> value=<?php echo $num; ?> class='radio' />
+                <label for=<?php echo $num; ?> class='seatlabel using'><?php echo $num; ?></label>
+<?php
+            }
+        }
+    }
+?>      
+            
         </div>
         <button class='tablesbtn'>RESERVE</button>
     </div>
