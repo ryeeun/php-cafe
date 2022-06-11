@@ -60,7 +60,7 @@
     <link rel="stylesheet" type="text/css" href="lib/css/item.css">
 </head>
 <body>
-    <h1>ORDER</h1>
+    <h1 class="header">ORDER</h1>
     <div class="container">
         <div class="itemlist">
 <?php
@@ -89,7 +89,7 @@
     }
 ?>
         </div>
-        <div class="basket">
+        <form class="basket" action="check_order.php" name="order_info" method="post">
             <h3>장바구니</h3>                    
             <div class="table-responsive">                        
                 <table class="basket-table">                            
@@ -126,7 +126,7 @@
                 </table>
             </div>
             <h3>이용 방법을 선택해주세요</h3>
-            <form class="pickup">
+            <div class="pickup">
                 <div class="radio">
                     <input type="radio" id="inhere" name="pickup" value="inhere">
                     <label for="inhere">매장 이용</label>
@@ -134,9 +134,9 @@
                     <input type="radio" id="takeout" name="pickup" value="takeout">
                     <label for="takeout">테이크아웃</label>
                 </div>
-            </form>
-            <input class="btn" type="button" name="go-to-reserve" value="주문하기" onClick="location.href='reserve.php'"/>
-        </div>  
+            </div>
+            <input class="btn" type="button" name="go-to-reserve" value="주문하기" onClick="location.href='check_order.php'"/>
+        </form>  
     </div>
 
 </body>

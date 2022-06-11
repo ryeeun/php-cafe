@@ -4,6 +4,7 @@
         echo "<script>location.replace('login.php');</script>";
     }
     else{
+        $uid = $_SESSION['uid'];
         $name = $_SESSION['name'];
     }
 ?>

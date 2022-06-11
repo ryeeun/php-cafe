@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    $uid = $_SESSION['uid'];
+
+    if(isset($_SESSION['table_oid'])) {
+        $oid = $_SESSION['table_oid'];
+    }
+    
+?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +16,7 @@
   <link rel="stylesheet" type="text/css" href="lib/css/tables.css" >
 </head>
 <body>
-    <div class='tables'>
+    <form class='tables' action="check_reserve.php" name="reserve" method="post">
         <div class='tablesStates'>
             <div class='tablesState'>
                 <span class='color Using'></span>
@@ -29,21 +39,22 @@
     $result = mysqli_query($conn, $sql);
 
     while($row = mysqli_fetch_array($result)){
+        $tid = $row['tid'];
         $num = $row['num'];
-        $isempty = $row['isempty'];
+        $oid = $row['oid'];
 ?>
 <?php        
         if($num <= 9){
-            if($isempty == 1){
+            if($oid == null){
 ?>
-            <input type="radio" name="seat" id=<?php echo $num; ?> value=<?php echo $num; ?> class='radio' />
-            <label for=<?php echo $num; ?> class='seatlabel'><?php echo $num; ?></label>
+            <input type="radio" name="seat" id=<?php echo $tid; ?> value=<?php echo $tid; ?> class='radio' />
+            <label for=<?php echo $tid; ?> class='seatlabel'><?php echo $num; ?></label>
 <?php
             }
             else{
 ?>
-                <input type="radio" name="seat" id=<?php echo $num; ?> value=<?php echo $num; ?> class='radio' />
-                <label for=<?php echo $num; ?> class='seatlabel using'><?php echo $num; ?></label>
+            <input type="radio" name="seat" id=<?php echo $tid; ?> value=<?php echo $tid; ?> class='radio' />
+            <label for=<?php echo $tid; ?> class='seatlabel using'><?php echo $num; ?></label>
 <?php
             }
         }
@@ -51,8 +62,10 @@
 ?>      
             
         </div>
-        <button class='tablesbtn'>RESERVE</button>
-    </div>
+        <button type="submit" class="tablesbtn" onclick="button()">
+        RESERVE
+        </button>
+    </form>
 
 </body>
 </html>
