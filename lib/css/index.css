@@ -15,7 +15,7 @@
     height: 300px;
     width: 500px;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     margin: -150px 0 0 -250px;
     display: flex;
@@ -32,7 +32,16 @@
     margin-bottom: 25px;
 }
 
-.btn {
+.logoutBtn {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(112, 76, 23);
+    color: white;
+    width: 120px;
+    height: 40px;
+}
+
+.orderBtn {
     border: none;
     border-radius: 10px;
     background-color: rgb(112, 76, 23);

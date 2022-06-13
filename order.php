@@ -57,10 +57,23 @@
 <head>
     <meta charset="utf-8">
     <title>ORDER</title>
+    <link rel="stylesheet" type="text/css" href="lib/css/topbar.css" >
     <link rel="stylesheet" type="text/css" href="lib/css/item.css">
 </head>
 <body>
-    <h1 class="header">ORDER</h1>
+    <div class="topbar">
+      <ul class="topList">
+        <li class="topListItem">
+          <a href="index.php">HOME</a>
+        </li>
+        <li class="topListItem">
+          <a href="order.php">ORDER</a>
+        </li>
+        <li class="topListItem">
+          <a href="mypage.php">MYPAGE</a>
+        </li>
+      </ul>
+    </div>
     <div class="container">
         <div class="itemlist">
 <?php

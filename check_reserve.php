@@ -15,8 +15,14 @@
     if(isset($_POST['seat'])) {
         $tid = $_POST['seat'];
 
-        $sql = "UPDATE tables SET oid = '$oid' WHERE tid = '$tid'";
+        date_default_timezone_set('Asia/Seoul');
+        $startTime = date("Y-m-d H:i:s");
+        $timestamp = strtotime("+3 minutes");
+        $endTime = date("Y-m-d H:i:s", $timestamp);
+
+        $sql = "UPDATE tables SET oid = '$oid', startTime = '$startTime', endTime = '$endTime' WHERE tid = '$tid'";
         $result = mysqli_query($conn, $sql);
+
 
         echo "<script>alert('$oid')</script>";
         echo "<script>location.replace('index.php');</script>";

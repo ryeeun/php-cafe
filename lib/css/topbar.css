@@ -1,0 +1,29 @@
+.topbar {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: white;
+}
+
+.topList {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.topListItem {
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.topListItem a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+a:link { color: black; text-decoration: none;}
+a:visited { color:black; text-decoration: none;}
+a:hover { color:black; text-decoration: none;}
+a:active { color:black; text-decoration: none;}
