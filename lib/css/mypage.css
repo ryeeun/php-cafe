@@ -1,5 +1,44 @@
 .mypage {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    
+    background-color: rgb(241, 239, 239);
+}
+
+.table{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin: 0 0 0 -500px;
+    width: 1000px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.table h3 {
+    position: inherit;
+    top: -40%;
+    left: 3%;
+}
+
+.mypage-table {
+    width: 900px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #444444;
+}
+
+.delete{
+    border-radius: 10px;
+    background-color: rgb(162, 129, 79);
+    color: white;
+    padding: 5px 10px;
 }

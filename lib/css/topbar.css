@@ -8,13 +8,16 @@
 }
 
 .topList {
+    flex:12;
     display: flex;
     justify-content: center;
     list-style: none;
+    padding-left: 100px;
 }
 
 .topListItem {
-    margin-right: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
     cursor: pointer;
 }
 
@@ -27,3 +30,14 @@ a:link { color: black; text-decoration: none;}
 a:visited { color:black; text-decoration: none;}
 a:hover { color:black; text-decoration: none;}
 a:active { color:black; text-decoration: none;}
+
+.logoutBtn {
+    flex: 1;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(112, 76, 23);
+    color: white;
+    width: 120px;
+    height: 40px;
+    margin-right: 20px;
+}

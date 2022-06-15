@@ -104,7 +104,7 @@
         </div>
         <form class="basket" action="check_order.php" name="order_info" method="post">
             <h3>장바구니</h3>                    
-            <div class="table-responsive">                        
+            <div class="table">                        
                 <table class="basket-table">                            
                     <tr>                                
                         <th width="40%">상품</th>                                
