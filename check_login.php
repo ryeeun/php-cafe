@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-   <meta charset="utf-8">
-   <title></title>
-</head>
-<body>
-   <?php
+<?php
     include './lib/include/sql_conn.php';
 
     session_start();
     
-      
     //login.php에서 입력받은 id, password
     $uid = $_POST['uid'];
     $password = $_POST['password'];
       
-    $q = "SELECT * FROM members WHERE uid = '$uid' AND password = '$password'";
-    $result = $conn->query($q);
-    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $sql = "SELECT * FROM members WHERE uid = '$uid' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
       
     //결과가 존재하면 세션 생성
     if ($row != null) {
@@ -34,5 +26,3 @@
         exit;
     }
     ?>
-</body>
-</html>

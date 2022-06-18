@@ -11,7 +11,6 @@
     session_start();
     $oid = $_SESSION['table_oid'];
 
-
     if(isset($_POST['seat'])) {
         $tid = $_POST['seat'];
 
@@ -31,7 +30,6 @@
         echo "<script>alert('Fail Reserve!')</script>";
         echo "<script>location.replace('reserve.php');</script>";
     }
-
 ?>
 </body>
 </html>

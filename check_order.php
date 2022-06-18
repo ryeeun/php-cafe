@@ -11,6 +11,13 @@
     $sql = "INSERT INTO orders (oid, uid, odtime) VALUES ('$oid', '$uid', '$odtime')";
     $result = mysqli_query($conn, $sql);
 
+    foreach($_SESSION["shopping_cart"] as $keys => $values){
+        $bid = $values["item_id"];
+        $num = $values["item_num"];
+        $sql = "INSERT INTO orderitems (oid, bid, num) VALUES ('$oid', '$bid', '$num')";
+        $result = mysqli_query($conn, $sql);
+    }
+
     $_SESSION['table_oid'] = $oid;
 ?>
 
@@ -18,3 +25,5 @@
     alert('Success Order!');
     location.href='reserve.php';
 </script>
+
+

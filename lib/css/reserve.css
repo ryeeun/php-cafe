@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
 }
 
 .tablesStates{
@@ -10,6 +9,7 @@
     background-color: rgb(241, 239, 239);
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .tablesState{
@@ -43,7 +43,6 @@
     margin: 30px;
     background-color: rgb(241, 239, 239);
 }
-
 
 .radio{
     display: none;

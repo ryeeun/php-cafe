@@ -12,7 +12,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>LOGIN</title>
+  <title>DBCAFE</title>
   <link rel="stylesheet" type="text/css" href="lib/css/topbar.css" >
   <link rel="stylesheet" type="text/css" href="lib/css/index.css" >
 </head>

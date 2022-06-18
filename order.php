@@ -2,6 +2,10 @@
     session_start();
     include './lib/include/sql_conn.php';
 
+    if(!isset($_SESSION['name'])) {
+        echo "<script>location.replace('login.php');</script>";
+    }
+
     if(isset($_POST["add_to_cart"]))    {       
         //쇼핑카트 세션 배열이 존재한다면        
         if(isset($_SESSION["shopping_cart"])){                      
@@ -12,24 +16,27 @@
                 $count =  count($_SESSION["shopping_cart"]);                                      
                 //클릭한 상품의 데이터를 배열에 넣는다.                        
                 $item_array = array(                        
-                    'item_id' => $_GET["bid"],                        
-                    'item_name' => $_POST["hidden_name"],                        
-                    'item_price' => $_POST["hidden_price"],                                         
+                    "item_id" => $_GET["bid"],                        
+                    "item_name" => $_POST["hidden_name"],
+                    "item_num" => 1,                        
+                    "item_price" => $_POST["hidden_price"],                                         
                 );                        
-                    //shopping_cart 세션 배열에서 그 다음 방부터 차례로 넣는다.                        
+                //shopping_cart 세션 배열에서 그 다음 방부터 차례로 넣는다.                        
                 $_SESSION["shopping_cart"][$count] = $item_array;                
             }
             else{                        
-                //클릭한 상품의 id가 $item_array_id 배열에 존재한다면                        
-                echo '<script>alert("같은 상품이 존재합니다.")</script>';                          
-                echo '<script>window.location="order.php"</script>';                
+                //클릭한 상품의 id가 $item_array_id 배열에 존재한다면   
+                $index = array_search($_GET["bid"], $item_array_id); 
+                $num = $_SESSION["shopping_cart"][$index]['item_num'];
+                $_SESSION["shopping_cart"][$index]['item_num'] = $num + 1;               
             }        
             //쇼핑카트 세션 배열이 존재하지 않는다면(즉, 제일 처음 카트 버튼을 눌렀을 때)        
         }
         else{           
             $item_array = array(                
                 'item_id' => $_GET["bid"],                
-                'item_name' => $_POST["hidden_name"],                
+                'item_name' => $_POST["hidden_name"],
+                'item_num' => 1,                
                 'item_price' => $_POST["hidden_price"],                     
             );            
                 //key 값이 shopping_cart 인 배열 0번 방에 상품 배열을 넣었다.            
@@ -56,23 +63,26 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>ORDER</title>
+    <title>DBCAFE</title>
     <link rel="stylesheet" type="text/css" href="lib/css/topbar.css" >
-    <link rel="stylesheet" type="text/css" href="lib/css/item.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/order.css">
 </head>
 <body>
     <div class="topbar">
-      <ul class="topList">
-        <li class="topListItem">
-          <a href="index.php">HOME</a>
-        </li>
-        <li class="topListItem">
-          <a href="order.php">ORDER</a>
-        </li>
-        <li class="topListItem">
-          <a href="mypage.php">MYPAGE</a>
-        </li>
-      </ul>
+        <ul class="topList">
+            <li class="topListItem">
+                <a href="index.php">HOME</a>
+            </li>
+            <li class="topListItem">
+                <a href="order.php">ORDER</a>
+            </li>
+            <li class="topListItem">
+                <a href="mypage.php">MYPAGE</a>
+            </li>
+        </ul>
+        <button type="button" class="logoutBtn" onClick="location.href='logout.php'">
+        LOGOUT
+        </button>
     </div>
     <div class="container">
         <div class="itemlist">
@@ -88,7 +98,8 @@
             <div>
                 <form method="post" action="order.php?action=add&bid=<?php echo $data['bid']; ?> ">
                     <div class="item">
-                        <img src="<?php echo "./lib/image/".$data['image']; ?>" class="beverageImg" /> </br>
+                        <img src="<?php echo "./lib/image/".$data['image']; ?>" class="beverageImg" /> 
+                        </br>
                         <span class="itemName"> <?php echo $data["bname"]; ?> </span>
                         <span class="itemPrice"> <?php echo $data["bprice"]."원"; ?> </span>
                                        
@@ -120,12 +131,16 @@
             ?>  
                     <tr>                            
                         <td><?php echo $values["item_name"]; ?></td>    
-                        <td>1</td>                                             
+                        <td><?php echo $values["item_num"]; ?></td>                                             
                         <td><?php echo $values["item_price"]; ?></td>                                                        
-                        <td><a href="order.php?action=delete&bid=<?php echo $values["item_id"]?>"> <span class="text-danger">삭제</span> </a></td>                        
+                        <td>
+                            <a href="order.php?action=delete&bid=<?php echo $values["item_id"]?>">
+                             <span class="text-danger">삭제</span> 
+                            </a>
+                        </td>                        
                     </tr>  
             <?php                                    
-                    $total = $total + $values["item_price"];                                
+                    $total = $total + $values["item_num"] * $values["item_price"];                                
                 }   //foreach 끝                            
             ?> 
                     <tr>
@@ -151,7 +166,6 @@
             <input class="btn" type="button" name="go-to-reserve" value="주문하기" onClick="location.href='check_order.php'"/>
         </form>  
     </div>
-
 </body>
 </html>
 

@@ -12,11 +12,28 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>RESERVE</title>
-  <link rel="stylesheet" type="text/css" href="lib/css/tables.css" >
+  <title>DBCAFE</title>
+  <link rel="stylesheet" type="text/css" href="lib/css/topbar.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/reserve.css">
 </head>
 <body>
     <form class='tables' action="check_reserve.php" name="reserve" method="post">
+        <div class="topbar">
+            <ul class="topList">
+                <li class="topListItem">
+                    <a href="index.php">HOME</a>
+                </li>
+                <li class="topListItem">
+                    <a href="order.php">ORDER</a>
+                </li>
+                <li class="topListItem">
+                    <a href="mypage.php">MYPAGE</a>
+                </li>
+            </ul>
+            <button type="button" class="logoutBtn" onClick="location.href='logout.php'">
+                LOGOUT
+            </button>
+        </div>
         <div class='tablesStates'>
             <div class='tablesState'>
                 <span class='color Using'></span>
@@ -60,7 +77,6 @@
         }
     }
 ?>      
-            
         </div>
         <button type="submit" class="tablesbtn" onclick="button()">
             RESERVE

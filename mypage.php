@@ -2,6 +2,9 @@
     include './lib/include/sql_conn.php';
     session_start();
     $uid = $_SESSION['uid'];
+    if(!isset($_SESSION['name'])) {
+        echo "<script>location.replace('login.php');</script>";
+    }
 
     if(isset($_GET["action"])){        
         if($_GET["action"]=="delete"){                
@@ -18,7 +21,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MYPAGE</title>
+  <title>DBCAFE</title>
   <link rel="stylesheet" type="text/css" href="lib/css/topbar.css" >
   <link rel="stylesheet" type="text/css" href="lib/css/mypage.css" >
 </head>
@@ -62,7 +65,11 @@
                     <td><?php echo $tid; ?></td>
                     <td><?php echo $startTime; ?></td>
                     <td><?php echo $endTime; ?></td>
-                    <td><a href="mypage.php?action=delete&tid=<?php echo $tid?>"> <span class="delete">이용 완료</span> </a></td>         
+                    <td>
+                        <a href="mypage.php?action=delete&tid=<?php echo $tid?>"> 
+                            <span class="delete">이용 완료</span> 
+                        </a>
+                    </td>         
                 </tr>
 <?php
     }
